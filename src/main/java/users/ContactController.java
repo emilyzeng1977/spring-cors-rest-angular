@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ContactController {
     private static final String template = "Address is %s!";
 
-    @CrossOrigin(origins = "http://localhost:8080")	//enable CORS
+    @CrossOrigin(origins = "http://localhost:9000")	//enable CORS
     @RequestMapping("/contact")
     public @ResponseBody Contact getContact(@RequestParam(required=false, defaultValue="1") int id) {
         System.out.println("==== request received ====");

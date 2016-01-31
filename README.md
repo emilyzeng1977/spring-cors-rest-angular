@@ -17,12 +17,17 @@
 ** http://localhost:8080/contact?id=2
 
 ### Setup Client ###
-* 
-
+* Go to the project folder
+* Because the Web Service is already running on port 8080, and in the ContactController.java, CORS defines only the localhost:9000 can access the service. So, the client should be deployed at port 9000. We're using Spring Boot buildin tomcat to start the client
+```
+$ mvn spring-boot:run -Dserver.port=9000
+```
+* Access client with
+** http://localhost:9000
 
 ## How do it work? ##
 ### Spring REST Service ###
-1. Create POJO to represent a resource class: Contact.java
+####1. Create POJO to represent a resource class: Contact.java####
 ```
 public class Contact {
     private final long id;
@@ -48,12 +53,12 @@ public class Contact {
 	}
 }
 ```
-2. Create a resource controller class: ContactController.java
+####2. Create a resource controller class: ContactController.java####
 ```
 @Controller
 public class ContactController {
     private static final String template = "Address is %s!";
-    @CrossOrigin(origins = "http://localhost:8080")	//enable CORS
+    @CrossOrigin(origins = "http://localhost:9000")	//enable CORS
     @RequestMapping("/contact")
     public @ResponseBody Contact getContact(@RequestParam(required=false, defaultValue="1") int id) {
         System.out.println("==== request received ====");
@@ -64,7 +69,7 @@ public class ContactController {
 }
 ```
 @CrossOrigin annotation enables cross-origin requests only for this specific method. 
-3. Make the application executable
+####3. Make the application executable####
 To make it simple, SpringBootApplication is been used
 ```
 @SpringBootApplication
@@ -74,4 +79,7 @@ public class Application {
     }
 }
 ```
+### Angular Client ###
+####1. Create Angular Controller####
+####2. Create view ####
     

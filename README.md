@@ -10,11 +10,10 @@
 ## How do I get set up? ##
 ### Setup Server ###
 * Import the project to STS as a standard Java Project
-* Run maven build
 * Run Application.java as Spring Boot App
 * Access web service with
-** http://localhost:8080/contact
-** http://localhost:8080/contact?id=2
+  * http://localhost:8080/contact
+  * http://localhost:8080/contact?id=2
 
 ### Setup Client ###
 * Go to the project folder
@@ -23,7 +22,7 @@
 $ mvn spring-boot:run -Dserver.port=9000
 ```
 * Access client with
-** http://localhost:9000
+  * http://localhost:9000
 
 ## How do it work? ##
 ### Spring REST Service ###

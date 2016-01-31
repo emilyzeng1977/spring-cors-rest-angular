@@ -81,5 +81,39 @@ public class Application {
 ```
 ### Angular Client ###
 ####1. Create Angular Controller####
+```
+angular.module('contactApp', [])
+.controller('ContactController', ['$scope', '$http', function($scope, $http) {
+  $scope.update = function() {
+		$http.get('http://localhost:8080/contact?id='+$scope.contact.id).
+		    success(function(data) {
+		        $scope.contact = data;
+		    });
+  };
+}]);
+```
 ####2. Create view ####
-    
+```
+<!doctype html>
+<html ng-app="contactApp">
+	<head>
+		<title>AngularJS REST Client</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
+    	<script src="contacts.client.controller.js"></script>
+	</head>
+
+	<body>
+		<div ng-controller="ContactController">
+		  <form novalidate class="simple-form">
+		  	Id: <input type="text" ng-model="contact.id" /><br /><br />
+			Contact ID is {{contact.id}}<br />
+			Contact Name is {{contact.name}}<br />
+			Contact Address is {{contact.address}}<br /><br />
+
+		    <input type="submit" ng-click="update()" value="Update" />
+		  </form>
+		  <pre>user = {{contact | json}}</pre>
+		</div>
+	</body>
+</html>
+```

@@ -1,17 +1,22 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="contactApp">
 	<head>
 		<title>AngularJS REST Client</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
     	<script src="contacts.client.controller.js"></script>
 	</head>
 
 	<body>
-		<div ng-controller="Contacts">
-			<p><input type="text" ng-model="id" /></p>
-			<p>The ID is {{contact.id}}</p>
-			<p>The Name is {{contact.name}}</p>
-			<p>The Address is {{contact.address}}</p>
+		<div ng-controller="ContactController">
+		  <form novalidate class="simple-form">
+		  	Id: <input type="text" ng-model="contact.id" /><br /><br />
+			Contact ID is {{contact.id}}<br />
+			Contact Name is {{contact.name}}<br />
+			Contact Address is {{contact.address}}<br /><br />
+
+		    <input type="submit" ng-click="update()" value="Update" />
+		  </form>
+		  <pre>user = {{contact | json}}</pre>
 		</div>
 	</body>
 </html>
